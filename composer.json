@@ -1,0 +1,13 @@
+{
+    "name": "a3gz/inflector",
+    "type": "library",
+    "description": "Inflector",
+    "keywords": ["inflector"],
+    "homepage": "https://github.com/a3gz/inflector",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "A3gZ\\Inflector\\": "src"
+        }
+    }
+}
