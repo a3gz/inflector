@@ -6,7 +6,7 @@
  * @copyright Copyright (c) Alejandro Arbiza
  * @license   http://www.roetal.com/license/mit (MIT License)
  */
-namespace A3gZ\Inflector;
+namespace A3gZ\Lib\Inflector;
 
 class Inflector 
 {
