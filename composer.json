@@ -7,7 +7,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "A3gZ\\Lib\\Inflector\\": "src/Lib/Inflector/"
+            "A3gZ\\Lib\\Inflector\\": "src/"
         }
     }
 }
