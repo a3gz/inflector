@@ -6,15 +6,15 @@
  * @copyright Copyright (c) Alejandro Arbiza
  * @license   http://www.roetal.com/license/mit (MIT License)
  */
-namespace A3gZ\Lib\Inflector;
+namespace A3gZ\Inflector;
 
 class Inflector 
 {
 
     /**
      * Camelize a text formed by words separated by spaces and/or underscores
-     * @param string $text The text to camelize
-     * @return string The camelized string
+     * @param string $text 
+     * @return string
      */
     public static function toCamel($text)
     {
@@ -34,8 +34,8 @@ class Inflector
     
     /**
      * Converts a camelized word into underscore separated words
-     * @param string $text The text to convert into underscore separated words
-     * @return string The converted string
+     * @param string $text 
+     * @return string 
      */
     public static function camelToUnderscore($text)
     {
@@ -46,22 +46,22 @@ class Inflector
     }	// camelToUnderscore()
 
     /**
-     * Converts an underscored text into human readable text
-     * @param string $text The text to convert into humanized words
-     * @return string The converted string
+     * Converts an underscored text into space separatod words with capitarl first letters 
+     * @param string $text
+     * @return string 
      */
-    public static function underscoreToHuman($text)
+    public static function underscoreToSpaced($text)
     {
 		return ucwords(str_replace("_", " ", $text));
     } // underscoreToHuman
 	
 
     /**
-     * Converts a camelized word into human readable text
-     * @param string $text The text to convert 
-     * @return string The converted string
+     * Converts a camelized word into space separated words with capital first letters
+     * @param string $text
+     * @return string 
      */
-    public static function camelToHuman($text)
+    public static function camelToSpaced($text)
     {
 		return Inflector::underscoreToHuman(Inflector::camelToUnderscore($text));
     }	// camelToHuman()
@@ -77,33 +77,7 @@ class Inflector
 		if (substr($s, -1) == "-") $s = substr($s, 0, -1);
 		return $s;
     } // dashify()
-	
-	/***
-	 * Converts a word into its plural form
-	 */
-	public static function pluralize($word)
-	{
-		if (has_filter("inflector_pluralize")) 
-        {
-			if ($newWord = apply_filter("inflector_pluralize", $word)) 
-            {
-				return $newWord;
-			}
-		}
-		
-		if (strtolower(substr($word, -1)) == "y") 
-        {
-			return substr($word, 0, -1) . "ies";
-		} 
-        elseif (strtolower(substr($word, -2)) == "ss") 
-        {
-			return $word . "es";
-		} 
-        else 
-        {
-			return $word . "s";
-		}
-	} // pluralize()
+
 	
     /**
      * Converts a text into a slug
@@ -138,19 +112,7 @@ class Inflector
 		);
 		return strtolower( preg_replace(array_keys($map), array_values($map), $text) );
     } // slug()
-	
-	/***
-	 *
-	 */
-	public static function feedEncode($string, $trans='') {
-		$trans = (is_array($trans)) ? $trans : get_html_translation_table(HTML_ENTITIES, ENT_QUOTES);
-		foreach ($trans as $k=>$v)
-        {
-			$trans[$k]= "&#".ord($k).";";
-        }
-		return strtr($string, $trans);
-	} // feedEncode()
-
-} // Inflector
+    
+} // class
 
  // EOF 
